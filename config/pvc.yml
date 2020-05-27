@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-data
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/data
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-code
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/code
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-code
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-logs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/logs
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-logs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-outputs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/outputs
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-outputs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-repos
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/repos
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-repos
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: polyaxon-pv-upload
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /home/inesa/nfs/upload
+    server: 192.168.201.6
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata: 
+  name: polyaxon-pvc-upload
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storages: 1Gi
