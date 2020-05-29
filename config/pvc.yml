@@ -22,7 +22,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi
 
 ---
 apiVersion: v1
@@ -49,7 +49,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi
 
 ---
 apiVersion: v1
@@ -76,7 +76,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi
 
 ---
 apiVersion: v1
@@ -103,7 +103,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -129,7 +129,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -155,4 +155,4 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storages: 1Gi
+      storage: 1Gi

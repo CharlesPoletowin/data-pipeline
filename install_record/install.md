@@ -269,3 +269,103 @@ Export list for 192.168.201.6:
 /home/inesa/nfs/data    *
 /home/inesa/nfs/code    *
 ```
+
+```
+kubectl create -f pvc.yml -n polyaxon
+```
+
+```
+helm install polyaxon polyaxon/polyaxon --namespace=polyaxon -f polyaxon-config.yml
+```
+
+if luckily, we will get 
+```
+NAME: polyaxon
+LAST DEPLOYED: Thu May 28 10:15:17 2020
+NAMESPACE: polyaxon
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Polyaxon is currently running:
+
+
+1. Get the application URL by running these commands:
+
+     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+           You can watch the status by running:
+           'kubectl get --namespace polyaxon svc -w polyaxon-polyaxon-api'
+
+
+  export POLYAXON_IP=$(kubectl get svc --namespace polyaxon polyaxon-polyaxon-api -o jsonpath='{.spec.clusterIP}')
+
+  export POLYAXON_PORT=80
+
+  echo http://$POLYAXON_IP:$POLYAXON_PORT
+
+2. Setup your cli by running theses commands:
+  polyaxon config set --host=$POLYAXON_IP --port=$POLYAXON_PORT
+
+3. Log in with superuser
+
+  USER: root
+  PASSWORD: Get login password with
+
+    kubectl get secret --namespace polyaxon polyaxon-polyaxon-secret -o jsonpath="{.data.POLYAXON_ADMIN_PASSWORD}" | base64 --decode
+init user is root and key is rootpassword
+```
+
+# install ksonnet
+```
+wget https://github.com/ksonnet/ksonnet/releases/download/v0.13.1/ks_0.13.1_linux_amd64.tar.gz
+tar -zxvf ks_0.13.1_linux_amd64.tar.gz 
+mv ks_0.13.1_linux_amd64/ks /usr/local/bin/
+ks
+```
+
+# install argo
+## 1. Download the Argo CLI
+```
+# Download the binary
+curl -sLO https://github.com/argoproj/argo/releases/download/v2.8.1/argo-linux-amd64
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+## 2. Install the Controller
+```
+kubectl create namespace argo
+kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo/stable/manifests/install.yaml
+```
+## Granting admin privileges
+```
+kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=default:default
+```
+
+## run sample
+```
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/hello-world.yaml
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/coinflip.yaml
+argo submit --watch https://raw.githubusercontent.com/argoproj/argo/master/examples/loops-maps.yaml
+```
+```
+argo list
+argo get xxx-workflow-name-xxx
+argo logs xxx-pod-name-xxx #from get command above
+```
+
+## Argo UI
+```
+kubectl -n argo port-forward deployment/argo-server 2746:2746
+```
+or just run
+```
+argo server
+```

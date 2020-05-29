@@ -14,8 +14,13 @@ persistence:
   upload:
     existingClaim: polyaxon-pvc-upload
   data:
-    existingClaim: polyaxon-pvc-data
-  code:
-    existingClaim: polyaxon-pvc-code
+    data1:
+      existingClaim: polyaxon-pvc-data
+      mountPath: /data
+    data2:
+      existingClaim: polyaxon-pvc-code
+      mountPath: /code
   outputs:
-    existingClaim: polyaxon-pvc-outputs
+    outputs1:
+      existingClaim: polyaxon-pvc-outputs
+      mountPath: /outputs
