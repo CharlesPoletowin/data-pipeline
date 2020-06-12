@@ -112,3 +112,6 @@ Kubeflow 包含了很多组件，就我组里落地使用的有 tf-operator 和 
 xxx on Kubernetes 应该是17年以来非常热门的架构了，包括我们一直在围绕 Kubernetes 提供各种基础服务，包括存储和计算。机器学习和深度学习方面我们原来模仿 spark-submit 做了个类似 tf-operator 的组件叫做 tf-submit.......，基本上就是根据 TF_CONFIG，来分别配置 PS/Worker 节点的启动参数，训练任务的生命周期是通过 Watch Pod 的状态来做的。但是在容错和重试这些的支持比较弱。那会各种 operator 还没有很多，所以在做分布式的 Tensorflow 训练的时候 tf-submit 基本够用了。
 
 tf-operator 就爽很多了，不同的分布式训练架构，重试，容错，这些都是在实际场景里非常有价值的特性，所以现在我们也切到 tf-operator 去了。
+
+# install
+[Link](https://blog.csdn.net/reachyu/article/details/105269138)

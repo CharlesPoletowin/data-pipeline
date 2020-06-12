@@ -315,6 +315,50 @@ Polyaxon is currently running:
 init user is root and key is rootpassword
 ```
 
+actually I first use the commands without config file, then I only use part of the config file, finally I get 
+<br/>
+The commands I use 
+```
+helm upgrade polyaxon polyaxon/polyaxon --namespace=polyaxon -f p2.yml 
+```
+
+```
+Release "polyaxon" has been upgraded. Happy Helming!
+NAME: polyaxon
+LAST DEPLOYED: Tue Jun  2 11:55:01 2020
+NAMESPACE: polyaxon
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+Polyaxon is currently running:
+
+
+1. Get the application URL by running these commands:
+
+     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+           You can watch the status by running:
+           'kubectl get --namespace polyaxon svc -w polyaxon-polyaxon-api'
+
+
+  export POLYAXON_IP=$(kubectl get svc --namespace polyaxon polyaxon-polyaxon-api -o jsonpath='{.spec.clusterIP}')
+
+  export POLYAXON_PORT=80
+
+  echo http://$POLYAXON_IP:$POLYAXON_PORT
+
+2. Setup your cli by running theses commands:
+  polyaxon config set --host=$POLYAXON_IP --port=$POLYAXON_PORT
+
+3. Log in with superuser
+
+  USER: root
+  PASSWORD: Get login password with
+
+    kubectl get secret --namespace polyaxon polyaxon-polyaxon-secret -o jsonpath="{.data.POLYAXON_ADMIN_PASSWORD}" | base64 --decode
+
+```
+
 # install ksonnet
 ```
 wget https://github.com/ksonnet/ksonnet/releases/download/v0.13.1/ks_0.13.1_linux_amd64.tar.gz
@@ -369,3 +413,12 @@ or just run
 ```
 argo server
 ```
+
+# install kfctl
+
+```
+wget https://github.com/kubeflow/kubeflow/releases/download/v1.0/kfctl_v1.0-0-g94c35cf_linux.tar.gz
+tar -zxvf kfctl_v1.0-0-g94c35cf_linux.tar.gz
+mv kfctl /usr/local/bin/
+```
+

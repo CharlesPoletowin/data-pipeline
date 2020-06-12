@@ -16,11 +16,11 @@ persistence:
   data:
     data1:
       existingClaim: polyaxon-pvc-data
-      mountPath: /data
+      mountPath: /home/inesa/nfs/data
     data2:
       existingClaim: polyaxon-pvc-code
-      mountPath: /code
+      mountPath: /home/inesa/nfs/code
   outputs:
     outputs1:
       existingClaim: polyaxon-pvc-outputs
-      mountPath: /outputs
+      mountPath: /home/inesa/nfs/outputs
