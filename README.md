@@ -7,3 +7,5 @@ This is the project Data Pipeline in INESA.
 3. We find Airflow could not run successfully in this kubernetes
 
 4. Now we try to use MLFlow instead.
+
+5. We found it almost impossible to install it in kubernetes successfully, so we try to install and use it in Ubuntu directly. Finally, this project has been terminated.
